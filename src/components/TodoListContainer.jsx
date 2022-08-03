@@ -11,7 +11,7 @@ const TodoListContainer = () => {
   return (
     <>
       <div>
-        <H2>Working.. 🔥</H2>
+        <H2>Working... 🔥</H2>
         <div>
           {todoListWorking.map((todo) => {
             return <TodoItem key={todo.id} todo={todo} />;

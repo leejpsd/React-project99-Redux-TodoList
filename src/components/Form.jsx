@@ -8,7 +8,8 @@ function Form() {
   const [body, setBody] = useState("");
   const dispatch = useDispatch();
 
-  const addItem = () => {
+  const addItem = (event) => {
+    event.preventDefault();
     dispatch(
       addTodo({
         id: Date.now(),
@@ -22,7 +23,7 @@ function Form() {
   };
 
   return (
-    <InputBox>
+    <InputForm onSubmit={addItem}>
       <Input
         placeholder="제목을 입력하세요."
         type="text"
@@ -37,13 +38,13 @@ function Form() {
         onChange={(event) => setBody(event.target.value)}
       ></Input>
 
-      <InputBtn onClick={addItem}>CLICK!</InputBtn>
-    </InputBox>
+      <InputBtn type="submit">CLICK</InputBtn>
+    </InputForm>
   );
 }
 
 export default Form;
-const InputBox = styled.div`
+const InputForm = styled.form`
   display: flex;
   margin-left: 5em;
   margin-top: 20px;
@@ -99,7 +100,6 @@ const InputBtn = styled.button`
   border: none;
   padding: none;
   color: #646363;
-  font-family: "Reenie Beanie";
   font-size: 20px;
   &:hover {
     transition: all 0.3s ease;
